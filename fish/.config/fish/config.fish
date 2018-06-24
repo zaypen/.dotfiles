@@ -15,6 +15,7 @@ set fish_theme harmony
 . $fish_path/oh-my-fish.fish
 
 # Aliases
+if which /Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs >/dev/null; alias emacs=/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs; end
 alias e="emacs -nw"
 if which hub >/dev/null; alias git=hub; end
 
