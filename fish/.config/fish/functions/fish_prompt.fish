@@ -1,3 +1,5 @@
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 0
+
 function visual_length --description\
     "Return visual length of string, i.e. without terminal escape sequences"
     # TODO: Use "string replace" builtin in Fish 2.3.0
@@ -69,6 +71,10 @@ function fish_prompt
   end
   _append right_prompt " "
   _append right_prompt (echo "$CMD_DURATION 1000" | awk '{printf "%.3fs", $1 / $2}')
+  set -l venv (basename "$VIRTUAL_ENV")
+  if test -n $venv
+    _append right_prompt (with_color magenta " ($venv)")
+  end
 
   # spaces
   set -l left_length (visual_length $left_prompt)
