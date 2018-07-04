@@ -1,0 +1,13 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	autocrlf = input
+	eol = lf
+[push]
+	default = simple
+[alias]
+	co = checkout
+	st = status
+	ci = commit
+	br = branch
+[include]
+	path = ~/.gitconfig_local
