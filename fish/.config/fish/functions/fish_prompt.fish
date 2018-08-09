@@ -79,9 +79,14 @@ function fish_prompt
   # spaces
   set -l left_length (visual_length $left_prompt)
   set -l right_length (visual_length $right_prompt)
-  set -l spaces (math "$COLUMNS - $left_length - $right_length")
+  set -l spaces (math "$COLUMNS - $right_length")
 
   echo -n $left_prompt
+  if test "$spaces" -gt "$left_length"
+    set spaces (math "$spaces - $left_length")
+  else
+    echo
+  end
   printf "%-"$spaces"s" " "
   echo $right_prompt
   echo -n $prompt_char" "
