@@ -9,5 +9,7 @@
 	st = status
 	ci = commit
 	br = branch
+[hub]
+	protocol = ssh
 [include]
 	path = ~/.gitconfig_local
