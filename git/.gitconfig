@@ -6,9 +6,22 @@
 	default = simple
 [alias]
 	co = checkout
-	st = status
+	st = status -sb
 	ci = commit
 	br = branch
+	ap = add -p
+	stat = !git --no-pager diff --stat
+	rv = remote -v
+
+	# http://www.jukie.net/bart/blog/pimping-out-git-log
+	lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+
+	# https://github.com/lewagon/dotfiles/blob/9532ec08b3021abd1adadf0c8b1c5b21a0ba491b/gitconfig#L26
+	sweep = !git branch --merged master | grep -v 'master$' | xargs git branch -d && git remote prune origin
+
+	# Serve local repo. http://coderwall.com/p/eybtga
+	# Then other can access via `git clone git://#{YOUR_IP_ADDRESS}/
+	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 [hub]
 	protocol = ssh
 [include]
