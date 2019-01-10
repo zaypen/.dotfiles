@@ -6,7 +6,6 @@ set -q XDG_DATA_HOME
 # Aliases
 if which /Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs >/dev/null; alias emacs=/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs; end
 alias e="emacs -nw"
-if which hub >/dev/null; alias git=hub; end
 
 # Export external editor
 set -gx VISUAL "emacs -nw"
