@@ -8,5 +8,5 @@ if which /Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs >/dev/null; alias
 alias e="emacs -nw"
 
 # Export external editor
-set -gx VISUAL "emacs -nw"
-set -gx EDITOR "emacs -nw"
+set -gx VISUAL emacs -nw
+set -gx EDITOR emacs -nw
