@@ -3,4 +3,5 @@ package foreign-env
 package nvm
 package rustup
 package rvm
+package vcs
 theme default
