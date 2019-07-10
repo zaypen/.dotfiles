@@ -10,6 +10,7 @@
 	ci = commit
 	br = branch
 	ap = add -p
+	pu = push --set-upstream
 	stat = !git --no-pager diff --stat
 	rv = remote -v
 
