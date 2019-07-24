@@ -1,0 +1,32 @@
+{
+    "title": "Filco Specific Mappings",
+    "rules": [
+      {
+        "description": "Change Command + Esc to Command + `",
+        "manipulators": [
+          {
+            "type": "basic",
+            "from": {
+              "key_code": "escape",
+              "modifiers": {
+                "mandatory": [
+                  "command"
+                ],
+                "optional": [
+                  "any"
+                ]
+              }
+            },
+            "to": [
+              {
+                "key_code": "grave_accent_and_tilde",
+                "modifiers": [
+                  "command"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
