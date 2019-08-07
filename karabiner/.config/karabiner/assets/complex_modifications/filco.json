@@ -11,9 +11,6 @@
               "modifiers": {
                 "mandatory": [
                   "command"
-                ],
-                "optional": [
-                  "any"
                 ]
               }
             },
@@ -22,6 +19,70 @@
                 "key_code": "grave_accent_and_tilde",
                 "modifiers": [
                   "command"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "from": {
+              "key_code": "escape",
+              "modifiers": {
+                "mandatory": [
+                  "option"
+                ]
+              }
+            },
+            "to": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Change Option + 1 to F1",
+        "manipulators": [
+          {
+            "type": "basic",
+            "from": {
+              "key_code": "1",
+              "modifiers": {
+                "mandatory": [
+                  "option"
+                ]
+              }
+            },
+            "to": [
+              {
+                "key_code": "f1",
+                "modifiers": [
+                  "option"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Change Control + ESC to Control + `",
+        "manipulators": [
+          {
+            "type": "basic",
+            "from": {
+              "key_code": "escape",
+              "modifiers": {
+                "mandatory": [
+                  "control"
+                ]
+              }
+            },
+            "to": [
+              {
+                "key_code": "grave_accent_and_tilde",
+                "modifiers": [
+                  "control"
                 ]
               }
             ]
