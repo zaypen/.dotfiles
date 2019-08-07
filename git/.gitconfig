@@ -23,6 +23,8 @@
 	# Serve local repo. http://coderwall.com/p/eybtga
 	# Then other can access via `git clone git://#{YOUR_IP_ADDRESS}/
 	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+
+	bci = !hub ci-status -v | awk '{ print $3 }' | xargs open
 [hub]
 	protocol = ssh
 [include]
