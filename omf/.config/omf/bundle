@@ -4,4 +4,5 @@ package nvm
 package rustup
 package rvm
 package vcs
+package z
 theme default
