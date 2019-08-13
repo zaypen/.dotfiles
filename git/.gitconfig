@@ -13,6 +13,13 @@
 	pu = push --set-upstream
 	stat = !git --no-pager diff --stat
 	rv = remote -v
+	rsh = reset HEAD
+	
+	# Rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbih = "!f() { git rebase -i HEAD~\"$@\"; }; f"
+	rbi = rebase -i
 
 	# http://www.jukie.net/bart/blog/pimping-out-git-log
 	lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
