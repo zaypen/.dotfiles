@@ -1,1 +1,2 @@
-require('mouse_indicator')
+require("hs.ipc")
+require('key-bindings')
