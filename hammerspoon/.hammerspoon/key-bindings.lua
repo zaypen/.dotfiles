@@ -26,4 +26,4 @@ bind(window_management.rightToLeft, {"⇧", "⌃", "⌥"}, "left")
 bind(window_management.rightToRight, {"⇧", "⌃", "⌥"}, "right")
 
 hs.hotkey.showHotkeys({"⇧", "⌃"}, "/")
-bind(hs.hints.windowHints, {"⌃"}, "/")
+-- bind(hs.hints.windowHints, {"⌃"}, "/")
