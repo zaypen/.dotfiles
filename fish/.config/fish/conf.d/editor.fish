@@ -1,2 +1,2 @@
-set -gx VISUAL emacs -nw
-set -gx EDITOR emacs -nw
+set -gx VISUAL emacsclient -a "emacs -q"
+set -gx EDITOR emacsclient -a "emacs -q"
