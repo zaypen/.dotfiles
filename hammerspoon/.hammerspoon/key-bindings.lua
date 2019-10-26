@@ -11,13 +11,13 @@ bind(mouse_indicator.toggle, {"⌘", "⇧", "⌃"}, "d")
 -- Window Management
 
 modal.bind({"⌘", "⌃"}, "w", {
-    {window_management.maximizeWindow,  "f", "Maximize active window"},
+    {window_management.maximizeWindow,  "m", "Maximize active window"},
     {window_management.centerOnScreen,  "c", "Center active window"},
 
-    {window_management.topHalf,	    "e", "Bring active window to top half"},
-    {window_management.bottomHalf,	"d", "Bring active window to bottom half"},
-    {window_management.leftHalf,	"s", "Bring active window to left half"},
-    {window_management.rightHalf,	"f", "Bring active window to right half"},
+    {window_management.topHalf,	    "k", "Bring active window to top half"},
+    {window_management.bottomHalf,	"j", "Bring active window to bottom half"},
+    {window_management.leftHalf,    "h", "Bring active window to left half"},
+    {window_management.rightHalf,	  "l", "Bring active window to right half"},
 
     -- {window_management.topUp,	    "up", ""},
     -- {window_management.topDown,	    "down", ""},
