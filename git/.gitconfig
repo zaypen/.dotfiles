@@ -32,6 +32,9 @@
 	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 
 	bci = !hub ci-status -v | awk '{ print $3 }' | xargs open
+
+	C = !git branch -a | grep -v $(git branch --show-current) | fzy | xargs git checkout
+	D = !git lg | peco | gawk '{ if (match($0,/([0-9a-f]{6})/,m)) print m[0] }' | paste -s -d' ' | xargs git diff
 [hub]
 	protocol = ssh
 [include]
