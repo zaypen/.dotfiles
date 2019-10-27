@@ -1,7 +1,18 @@
 local alert = require('hs.alert')
 local hotkey = require('hs.hotkey')
+local fnutils = require('hs.fnutils')
 
 local module = {}
+
+local fontStyle = {
+  atScreenEdge = 0,
+  strokeColor = { white = 0.875, alpha = 1 },
+  fillColor   = { white = 0.125, alpha = 0.75 },
+  textColor = { white = 1, alpha = 1 },
+  textFont = 'Monaco',
+  textSize = 18,
+  radius = 10,
+}
 
 local function wrap(m, fn)
     return function()
@@ -10,25 +21,52 @@ local function wrap(m, fn)
     end
 end
 
-module.bind = function(mods, key, mappings)
-    local modal = hotkey.modal.new(mods, key)
-    local message = "Cheet sheet"
-    local alert_id = nil
-    message = message .. "\ng\tQuit"
-    modal:bind({}, "q", "Quit", function() modal:exit() end)
-    for _, mapping in ipairs(mappings) do
-        message = message .. "\n" .. mapping[2] .. "\t" .. mapping[3]
-        modal:bind({}, mapping[2], mapping[3], wrap(modal, mapping[1]))
-        modal:bind({"⌘"}, mapping[2], mapping[3], mapping[1])
+local alertId = nil
+
+local function close()
+    if (alertId ~= nil) then
+        alert.closeSpecific(alertId)
+        alertId = nil
     end
-    message = message .. "\n\n Hold ⌘ to keep operating"
+end
+
+local function display(message)
+    alert.closeAll()
+    alertId = alert.show(message, fontStyle, true)
+end
+
+local function bind(modal, mappings)
+    local message = "Commands"
+    message = message .. "\nq\tQuit"
+    modal:bind({}, "q", "Quit", function() modal:exit() end)
+    for _, params in ipairs(mappings) do
+        local key = params[1]
+        local desc = params[2]
+        local func = params[3]
+        if type(func) == 'function' then
+            modal:bind({}, key, desc, wrap(modal, func))
+            message = message .. "\n" .. key .. "\t" .. desc
+        else
+            modal:bind({}, key, desc, function()
+                modal:exit()
+                local sub = hotkey.modal.new()
+                bind(sub, func)
+                sub:enter()
+            end)
+            message = message .. "\n" .. key .. "\t" .. '+' .. desc
+        end
+    end
     function modal:entered()
-        alert_id = alert.show(message, "infinite")
+        display(message)
     end
     function modal:exited()
-        alert.closeSpecific(alert_id)
+        close()
     end
-    return modal
+end
+
+module.bind = function(mods, key, mappings)
+    local modal = hotkey.modal.new(mods, key)
+    bind(modal, mappings)
 end
 
 return module

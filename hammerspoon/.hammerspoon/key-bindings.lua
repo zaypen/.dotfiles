@@ -2,30 +2,32 @@ local window_management = require('window-management')
 local mouse_indicator = require('mouse-indicator')
 local modal = require('modal')
 
-local function bind(fn, mods, key, message)
-    hs.hotkey.bind(mods, key, message, fn)
-end
+hs.alert.defaultStyle = {
+  strokeWidth  = 2,
+  strokeColor = { white = 1, alpha = 1 },
+  fillColor   = { white = 0, alpha = 0.75 },
+  textColor = { white = 1, alpha = 1 },
+  textFont  = ".AppleSystemUIFont",
+  textSize  = 12,
+  radius = 8,
+  atScreenEdge = 0,
+  fadeInDuration = 0.15,
+  fadeOutDuration = 0.15,
+}
 
-bind(mouse_indicator.toggle, {"⌘", "⇧", "⌃"}, "d")
 
--- Window Management
+local bindings = {
+  -- Window Management
+  {'m', 'Maximize active window', window_management.maximizeWindow},
+  {'c', 'Center active window', window_management.centerOnScreen},
+  {'h', 'Bring active window to left half', window_management.leftHalf},
+  {'j', 'Bring active window to bottom half', window_management.bottomHalf},
+  {'k', 'Bring active window to top half', window_management.topHalf},
+  {'l', 'Bring active window to right half', window_management.rightHalf},
+  -- Toggles
+  {'t', 'Toggles', {
+    {'m', 'Toggle mouse indicator', mouse_indicator.toggle},
+  }},
+}
 
-modal.bind({"⌘", "⌃"}, "w", {
-    {window_management.maximizeWindow,  "m", "Maximize active window"},
-    {window_management.centerOnScreen,  "c", "Center active window"},
-
-    {window_management.topHalf,	    "k", "Bring active window to top half"},
-    {window_management.bottomHalf,	"j", "Bring active window to bottom half"},
-    {window_management.leftHalf,    "h", "Bring active window to left half"},
-    {window_management.rightHalf,	  "l", "Bring active window to right half"},
-
-    -- {window_management.topUp,	    "up", ""},
-    -- {window_management.topDown,	    "down", ""},
-    -- {window_management.leftToLeft,	"left", ""},
-    -- {window_management.leftToRight,	"right", ""},
-
-    -- {window_management.bottomUp,	"up", ""},
-    -- {window_management.bottomDown,	"down", ""},
-    -- {window_management.rightToLeft,	"left", ""},
-    -- {window_management.rightToRight,"right", ""},
-})
+modal.bind({"⌘", "⌃"}, "w", bindings)
