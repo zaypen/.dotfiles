@@ -5,4 +5,3 @@ function hf --wraps history --description 'Show and manipulate command history a
         history $argv
     end
 end
-
