@@ -1,0 +1,24 @@
+* .dotfiles
+Your dotfiles are how you personalize your system. These are mine. -- [[https://github.com/holman/dotfiles#holman-does-dotfiles][holman]]
+** Prerequisites
+*** stow
+stow is used to link dot files into your home directory, install it via below ways.
+#+BEGIN_SRC sh
+  sudo port install stow # MacPorts user
+  brew install stow # Homebrew user
+#+END_SRC
+** Components
+| Name               | Folder             | Description                                                 |
+|--------------------+--------------------+-------------------------------------------------------------|
+| macOS key bindings | macos-key-bindings | Overriding all special characters by holding Option         |
+| Git                | git                | With concise and useful git/hub aliases                     |
+| Fish Shell         | fish               | Fancy prompt, completions and powerful customized functions |
+| oh-my-fish         | omf                | Common packages                                             |
+| hammerspoon        | hammerspoon        | Window management and mouse indicator (toy)                 |
+| Karabiner-Elements | karabiner          | Tweaks useful to 60% keyboard users                         |
+| Spacemacs          | spacemacs          | Almost vanilla Spacemacs configuration                      |
+** Install
+#+BEGIN_SRC sh
+  ./reload # link all above to your home directory
+  stow -vR git # link git to your home directory
+#+END_SRC
