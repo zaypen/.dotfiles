@@ -1,13 +1,45 @@
 * .dotfiles
+
 Your dotfiles are how you personalize your system. These are mine. -- [[https://github.com/holman/dotfiles#holman-does-dotfiles][holman]]
+
 ** Prerequisites
+
 *** stow
+
 stow is used to link dot files into your home directory, install it via below ways.
+
 #+BEGIN_SRC sh
   sudo port install stow # MacPorts user
   brew install stow # Homebrew user
 #+END_SRC
+
+** Features
+
+*** RAM Disk
+
+Using RAM Disk to speed your frequently used application, such as
+
+- Google Chrome
+- JetBrains All Products
+  - AppCode
+  - CLion
+  - DataGrip
+  - GoLand
+  - IntelliJ IDEA
+  - IntelliJ IDEA CE
+  - PhpStorm
+  - PyCharm
+  - PyCharmCE
+  - Rider
+  - RubyMine
+  - WebStorm
+
+*** Well-defined components
+
+see below.
+
 ** Components
+
 | Name               | Folder             | Description                                                 |
 |--------------------+--------------------+-------------------------------------------------------------|
 | macOS key bindings | macos-key-bindings | Overriding all special characters by holding Option         |
@@ -17,8 +49,18 @@ stow is used to link dot files into your home directory, install it via below wa
 | hammerspoon        | hammerspoon        | Window management and mouse indicator (toy)                 |
 | Karabiner-Elements | karabiner          | Tweaks useful to 60% keyboard users                         |
 | Spacemacs          | spacemacs          | Almost vanilla Spacemacs configuration                      |
+
 ** Install
+
+Bootstrap from scratch (install all features and components)
+
 #+BEGIN_SRC sh
-  ./reload # link all above to your home directory
+  ./bootstrap
+#+END_SRC
+
+Install separate components
+
+#+BEGIN_SRC sh
+  ./reload # link all above components to your home directory
   stow -vR git # link git to your home directory
 #+END_SRC
