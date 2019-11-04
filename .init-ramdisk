@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# Define the RAM size you'd like to use as RAM disk, 1/8 by default
+RAM_SIZE=$(($(sysctl hw.memsize | cut -d ' ' -f 2) / 512 / 8))
+
+# Define mount point here
+MOUNT_POINT="$HOME/.RamDisk"
+
+# DON'T CHANGE BELOW UNLESS YOU KNOW WHAT YOU'RE DOING
+
+create_ramdisk() {
+    mkdir -p "$MOUNT_POINT"
+    rm -rf "$MOUNT_POINT/*"
+    umount -f "$MOUNT_POINT"
+    DISK=$(hdiutil attach -nomount ram://$RAM_SIZE | xargs)
+    newfs_hfs -v "RamDisk" "$DISK"
+    mount -o noatime -t hfs "$DISK" "$MOUNT_POINT"
+    chflags hidden "$MOUNT_POINT"
+}
+
+setup_chrome() {
+    rm -rvf ~/Library/Caches/Google/Chrome
+    mkdir -pv "$MOUNT_POINT/Chrome"
+    ln -vfs "$MOUNT_POINT/Chrome" ~/Library/Caches/Google/Chrome
+}
+
+_check_and_update_ide_properties() {
+    LOCATION=${1:-}
+    CACHE_NAME=${2:-}
+    [[ -d "$LOCATION" ]] && {
+        grep idea.system.path "$LOCATION/Contents/bin/idea.properties" || {
+            cp "$LOCATION/Contents/bin/idea.properties" "$LOCATION/Contents/bin/idea.properties.bak"
+            echo "idea.system.path=$MOUNT_POINT/$CACHE_NAME" >> "$LOCATION/Contents/bin/idea.properties"
+        }
+    }
+}
+
+setup_jetbrains() {
+    _check_and_update_ide_properties "/Applications/AppCode.app"           "AppCode"
+    _check_and_update_ide_properties "/Applications/CLion.app"             "CLion"
+    _check_and_update_ide_properties "/Applications/DataGrip.app"          "DataGrip"
+    _check_and_update_ide_properties "/Applications/GoLand.app"            "GoLand"
+    _check_and_update_ide_properties "/Applications/IntelliJ IDEA.app"     "IntelliJ IDEA"
+    _check_and_update_ide_properties "/Applications/IntelliJ IDEA CE.app"  "IntelliJ IDEA CE"
+    _check_and_update_ide_properties "/Applications/PhpStorm.app"          "PhpStorm"
+    _check_and_update_ide_properties "/Applications/PyCharm.app"           "PyCharm"
+    _check_and_update_ide_properties "/Applications/PyCharm CE.app"        "PyCharmCE"
+    _check_and_update_ide_properties "/Applications/Rider.app"             "Rider"
+    _check_and_update_ide_properties "/Applications/RubyMine.app"          "RubyMine"
+    _check_and_update_ide_properties "/Applications/WebStorm.app"          "WebStorm"
+}
+
+create_ramdisk
+setup_chrome
+setup_jetbrains
