@@ -17,7 +17,7 @@ stow is used to link dot files into your home directory, install it via below wa
 
 *** RAM Disk
 
-Using RAM Disk to speed your frequently used application, such as
+Using RAM Disk to speed your frequently used applications, such as
 
 - Google Chrome
 - JetBrains All Products
@@ -34,15 +34,11 @@ Using RAM Disk to speed your frequently used application, such as
   - RubyMine
   - WebStorm
 
-*** Well-defined components
-
-see below.
-
-** Components
+*** Well-tweaked components
 
 | Name               | Folder             | Description                                                 |
 |--------------------+--------------------+-------------------------------------------------------------|
-| macOS key bindings | macos-key-bindings | Overriding all special characters by holding Option         |
+| [[#macos-key-bindings][macOS key bindings]] | macos-key-bindings | Overriding all special characters by holding Option         |
 | Git                | git                | With concise and useful git/hub aliases                     |
 | Fish Shell         | fish               | Fancy prompt, completions and powerful customized functions |
 | oh-my-fish         | omf                | Common packages                                             |
@@ -64,3 +60,22 @@ Install separate components
   ./reload # link all above components to your home directory
   stow -vR git # link git to your home directory
 #+END_SRC
+
+** Components
+
+*** macOS key bindings
+
+Besides suppression of all Option with alphabet character combinations, following bindings are added globally.
+
+| Binding | Expression                                               |
+|---------+----------------------------------------------------------|
+| ~M-f~   | "~f" = (moveWordForward:);                               |
+| ~M-b~   | "~b" = (moveWordBackward:);                              |
+| ~M-<~   | "~<" = (moveToBeginningOfDocument:);                     |
+| ~M->~   | "~>" = (moveToEndOfDocument:);                           |
+| ~M-v~   | "~v" = (pageUp:);                                        |
+| ~M-d~   | "~d" = (deleteWordForward:);                             |
+| ~C-M-h~ | "~^h" = (deleteWordBackward:);                           |
+| ~M-BS~  | "~\010" = (deleteWordBackward:);  /* Option-backspace */ |
+| ~M-DEL~ | "~\177" = (deleteWordBackward:);  /* Option-delete */    |
+
