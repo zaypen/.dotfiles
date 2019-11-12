@@ -39,7 +39,7 @@ Using RAM Disk to speed your frequently used applications, such as
 | Name               | Folder             | Description                                                 |
 |--------------------+--------------------+-------------------------------------------------------------|
 | [[#macos-key-bindings][macOS key bindings]] | macos-key-bindings | Overriding all special characters by holding Option         |
-| Git                | git                | With concise and useful git/hub aliases                     |
+| [[#git][Git]]                | git                | With concise and useful git/hub aliases                     |
 | Fish Shell         | fish               | Fancy prompt, completions and powerful customized functions |
 | oh-my-fish         | omf                | Common packages                                             |
 | hammerspoon        | hammerspoon        | Window management and mouse indicator (toy)                 |
@@ -79,3 +79,23 @@ Besides suppression of all Option with alphabet character combinations, followin
 | ~M-BS~  | "~\010" = (deleteWordBackward:);  /* Option-backspace */ |
 | ~M-DEL~ | "~\177" = (deleteWordBackward:);  /* Option-delete */    |
 
+*** Git
+
+Before apply this, rename your original ~.gitconfig~ as ~.gitconfig_local~, which will be imported by it.
+
+| Alias | Alias for                   | Description                        | Note                |
+|-------+-----------------------------+------------------------------------+---------------------|
+| ci    | commit                      | Shortcut                           |                     |
+| co    | checkout                    | Shortcut                           |                     |
+| st    | status -sb                  | Concise status                     |                     |
+| br    | branch                      | Shortcut                           |                     |
+| ap    | add -p                      | Add via patching                   |                     |
+| pu    | push --set-upstream         | Push and set upstream              |                     |
+| stat  | !git --no-pager diff --stat | Quik stats                         |                     |
+| rv    | remote -v                   | Verbose remote                     |                     |
+| lg    | [[https://github.com/zaypen/.dotfiles/blob/011cae3fc3c034ce96495b7592cb81b21ab90758/git/.gitconfig#L25][Long alias]]                  | Concise one-line log               |                     |
+| sweep | [[https://github.com/zaypen/.dotfiles/blob/011cae3fc3c034ce96495b7592cb81b21ab90758/git/.gitconfig#L28][Long alias]]                  | Sweep merged branches and prune    |                     |
+| serve | [[https://github.com/zaypen/.dotfiles/blob/011cae3fc3c034ce96495b7592cb81b21ab90758/git/.gitconfig#L32][Long alias]]                  | Serve current git repository       |                     |
+| bci   | [[https://github.com/zaypen/.dotfiles/blob/011cae3fc3c034ce96495b7592cb81b21ab90758/git/.gitconfig#L32][Long alias]]                  | Browse CI pipeline                 | requires [[https://github.com/github/hub][hub]]        |
+| cb    | [[https://github.com/zaypen/.dotfiles/blob/011cae3fc3c034ce96495b7592cb81b21ab90758/git/.gitconfig#L36][Long alias]]                  | Checkout branch interactively      | requires [[https://github.com/jhawthorn/fzy][fzy]]        |
+| dl    | [[https://github.com/zaypen/.dotfiles/blob/011cae3fc3c034ce96495b7592cb81b21ab90758/git/.gitconfig#L37][Long alias]]                  | Diff by selecting commits form log | requires [[https://github.com/peco/peco][peco]], gawk |
