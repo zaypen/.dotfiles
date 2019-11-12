@@ -1,8 +1,6 @@
-package direnv
 package foreign-env
 package nvm
 package rustup
-package rvm
 package vcs
 package z
 theme default
