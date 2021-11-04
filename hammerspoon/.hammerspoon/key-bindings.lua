@@ -30,4 +30,4 @@ local bindings = {
   }},
 }
 
-modal.bind({"⌘", "⌃"}, "w", bindings)
+modal.bind({"⌘", "⌃"}, "m", bindings)
