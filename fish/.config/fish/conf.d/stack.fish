@@ -1,1 +1,1 @@
-set -x PATH ~/.local/bin $PATH
+set -x PATH $HOME/.local/bin $PATH
