@@ -3,8 +3,12 @@ function emacsclient --wraps emacsclient --description 'emacsclient wrapper that
     argparse "s/socket-name=" -- $argv >/dev/null 2>/dev/null
     if set --query $_flag_s
         if not command emacsclient -e t >/dev/null 2>/dev/null
-            screen emacs --daemon
+            emacs --daemon
         end
     end
-    env TERM=xterm-24bit command emacsclient $options
+    if test (find ~/.terminfo -name xterm-24bit | wc -l) -eq "1"
+        env TERM=xterm-24bit command emacsclient $options
+    else
+        command emacsclient $options
+    end
 end
