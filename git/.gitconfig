@@ -2,19 +2,25 @@
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	eol = lf
+[init]
+	defaultBranch = master
+[pull]
+	ff = only
 [push]
 	default = simple
 [alias]
 	co = checkout
 	st = status -sb
 	ci = commit
+	cia = commit --amend
+	cl = clean -f -d .
 	br = branch
 	ap = add -p
 	pu = push --set-upstream
 	stat = !git --no-pager diff --stat
 	rv = remote -v
 	rsh = reset HEAD
-	
+
 	# Rebase
 	rba = rebase --abort
 	rbc = rebase --continue
@@ -31,10 +37,10 @@
 	# Then other can access via `git clone git://#{YOUR_IP_ADDRESS}/
 	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 
-	bci = !hub ci-status -v origin/HEAD | awk '{ print $3 }' | xargs open
+	bci = !hub ci-status -v HEAD | awk '{ print $3 }' | xargs open
 
-	cb = !git branch -a | grep -v $(git branch --show-current) | fzy | xargs git checkout
-	dl = !git lg | peco | gawk '{ if (match($0,/([0-9a-f]{6})/,m)) print m[0] }' | paste -s -d' ' | xargs git diff
+	cb = !git branch | fzy | xargs git checkout
+	dl = !git lg | peco | awk '{ if (match($0,/([0-9a-f]{6})/,m)) print m[0] }' | paste -s -d' ' | xargs git diff
 [hub]
 	protocol = ssh
 [include]
