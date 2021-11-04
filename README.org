@@ -15,25 +15,6 @@ stow is used to link dot files into your home directory, install it via below wa
 
 ** Features
 
-*** RAM Disk
-
-Using RAM Disk to speed your frequently used applications, such as
-
-- Google Chrome
-- JetBrains All Products
-  - AppCode
-  - CLion
-  - DataGrip
-  - GoLand
-  - IntelliJ IDEA
-  - IntelliJ IDEA CE
-  - PhpStorm
-  - PyCharm
-  - PyCharmCE
-  - Rider
-  - RubyMine
-  - WebStorm
-
 *** Well-tweaked components
 
 | Name               | Folder             | Description                                                 |

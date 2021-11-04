@@ -9,19 +9,24 @@ MOUNT_POINT="$HOME/.RamDisk"
 # DON'T CHANGE BELOW UNLESS YOU KNOW WHAT YOU'RE DOING
 
 create_ramdisk() {
-    mkdir -p "$MOUNT_POINT"
-    rm -rf "$MOUNT_POINT/*"
-    umount -f "$MOUNT_POINT"
-    DISK=$(hdiutil attach -nomount ram://$RAM_SIZE | xargs)
-    newfs_hfs -v "RamDisk" "$DISK"
+    mount | grep "$HOME/.RamDisk" > /dev/null || {
+        mkdir -p "$MOUNT_POINT";
+        # rm -rf "$MOUNT_POINT/*";
+        umount -f "$MOUNT_POINT";
+        DISK=$(hdiutil attach -nomount ram://$RAM_SIZE | xargs);
+        newfs_hfs -v "RamDisk" "$DISK";
+    }
     mount -o noatime -t hfs "$DISK" "$MOUNT_POINT"
     chflags hidden "$MOUNT_POINT"
 }
 
 setup_chrome() {
-    rm -rvf ~/Library/Caches/Google/Chrome
-    mkdir -pv "$MOUNT_POINT/Chrome"
-    ln -vfs "$MOUNT_POINT/Chrome" ~/Library/Caches/Google/Chrome
+    [[ ! -L ~/Library/Caches/Google/Chrome ]] && {
+        rm -rvf ~/Library/Caches/Google/Chrome
+        mkdir -pv "$MOUNT_POINT/Chrome"
+        mv ~/Library/Caches/Google/Chrome "$MOUNT_POINT/"
+        ln -vfs "$MOUNT_POINT/Chrome" ~/Library/Caches/Google/Chrome
+    }
 }
 
 _check_and_update_ide_properties() {
