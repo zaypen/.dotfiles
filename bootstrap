@@ -12,7 +12,5 @@ obtainAccess
 
 installXcode
 
-setupRamDisk
-
 info "Updating dotfiles..."
 ./reload >/dev/null 2>&1
