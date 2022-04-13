@@ -1,0 +1,1 @@
+[ -e $HOME/.dotnet ] && set -x PATH $HOME/.dotnet $PATH
