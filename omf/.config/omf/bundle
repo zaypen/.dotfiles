@@ -1,9 +1,7 @@
 package bass
-package direnv
 package foreign-env
 package nvm
 package rustup
 package vcs
-package z
 theme bobthefish
 theme default
