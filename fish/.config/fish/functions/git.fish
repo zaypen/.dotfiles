@@ -4,6 +4,6 @@ function git --wraps hub --description 'Alias for hub, which wraps git to provid
     if type -q hub >/dev/null
         hub $argv
     else
-        git $argv
+        command git $argv
     end
 end
