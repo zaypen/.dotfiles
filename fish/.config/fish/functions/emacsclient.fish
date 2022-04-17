@@ -7,7 +7,7 @@ if command -q emacsclient
                 emacs --daemon
             end
         end
-        if test (find ~/.terminfo -name xterm-24bit | wc -l) -eq "1"
+        if test (find ~/.terminfo -name xterm-24bit 2>/dev/null | wc -l) -eq "1"
             env TERM=xterm-24bit command emacsclient $options
         else
             command emacsclient $options
