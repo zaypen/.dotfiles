@@ -13,6 +13,7 @@
 	st = status -sb
 	ci = commit
 	cia = commit --amend
+	fa = commit --amend --no-edit --reset-author
 	cl = clean -f -d .
 	br = branch
 	ap = add -p
