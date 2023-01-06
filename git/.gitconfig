@@ -8,6 +8,7 @@
 	ff = only
 [push]
 	default = simple
+	autoSetupRemote = true
 [alias]
 	co = checkout
 	st = status -sb
@@ -17,7 +18,6 @@
 	cl = clean -f -d .
 	br = branch
 	ap = add -p
-	pu = push --set-upstream
 	stat = !git --no-pager diff --stat
 	rv = remote -v
 	rsh = reset HEAD
