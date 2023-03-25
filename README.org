@@ -28,17 +28,11 @@ stow is used to link dot files into your home directory, install it via below wa
 
 ** Install
 
-Bootstrap from scratch (install all features and components)
+Bootstrap 
 
 #+BEGIN_SRC sh
-  ./bootstrap
-#+END_SRC
-
-Install separate components
-
-#+BEGIN_SRC sh
-  ./reload # link all above components to your home directory
-  stow -vR git # link git to your home directory
+  echo "git" >> ./enabled # Enable git
+  ./bootstrap # Link enabled packages
 #+END_SRC
 
 ** Components

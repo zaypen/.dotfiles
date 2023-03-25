@@ -3,14 +3,4 @@
 DIR=$(dirname "$0")
 cd $DIR
 
-# load functions
-for function in $(ls -1 .functions/*.sh); do
-    source "$function"
-done
-
-obtainAccess
-
-installXcode
-
-info "Updating dotfiles..."
 ./reload >/dev/null 2>&1

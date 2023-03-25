@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 
 cd $(dirname $0)/..
-ls -1d */ | xargs stow -Rv
+touch enabled
+cat enabled | xargs stow -Rv
