@@ -7,6 +7,3 @@ end
 function __fish_flutter_disable_mirror
     set -ge PUB_HOSTED_URL FLUTTER_STORAGE_BASE_URL FLUTTER_GIT_URL
 end
-
-# Enable mirror by default
-__fish_flutter_enable_mirror
