@@ -24,22 +24,6 @@ Bootstrap
 
 ** Components
 
-*** macOS key bindings
-
-Besides suppression of all Option with alphabet character combinations, following bindings are added globally.
-
-| Binding | Expression                                               |
-|---------+----------------------------------------------------------|
-| ~M-f~   | "~f" = (moveWordForward:);                               |
-| ~M-b~   | "~b" = (moveWordBackward:);                              |
-| ~M-<~   | "~<" = (moveToBeginningOfDocument:);                     |
-| ~M->~   | "~>" = (moveToEndOfDocument:);                           |
-| ~M-v~   | "~v" = (pageUp:);                                        |
-| ~M-d~   | "~d" = (deleteWordForward:);                             |
-| ~C-M-h~ | "~^h" = (deleteWordBackward:);                           |
-| ~M-BS~  | "~\010" = (deleteWordBackward:);  /* Option-backspace */ |
-| ~M-DEL~ | "~\177" = (deleteWordBackward:);  /* Option-delete */    |
-
 *** Git
 
 Before apply this, rename your original ~.gitconfig~ as ~.gitconfig_local~, which will be imported by it.
