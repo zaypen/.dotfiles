@@ -13,19 +13,6 @@ stow is used to link dot files into your home directory, install it via below wa
   brew install stow # Homebrew user
 #+END_SRC
 
-** Features
-
-*** Well-tweaked components
-
-| Name               | Folder             | Description                                                 |
-|--------------------+--------------------+-------------------------------------------------------------|
-| [[#macos-key-bindings][macOS key bindings]] | macos-key-bindings | Overriding all special characters by holding Option         |
-| [[#git][Git]]                | git                | With concise and useful git/hub aliases                     |
-| Fish Shell         | fish               | Fancy prompt, completions and powerful customized functions |
-| oh-my-fish         | omf                | Common packages                                             |
-| hammerspoon        | hammerspoon        | Window management and mouse indicator (toy)                 |
-| Karabiner-Elements | karabiner          | Tweaks useful to 60% keyboard users                         |
-
 ** Install
 
 Bootstrap 
