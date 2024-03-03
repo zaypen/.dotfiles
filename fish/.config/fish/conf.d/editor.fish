@@ -1,4 +1,4 @@
-if command -q emacsclient
-    set -x VISUAL emacsclient -t -a emacs
-    set -x EDITOR emacsclient -t -a emacs
+if command -q emacs
+    set -x VISUAL emacsclient -t -socket-name=cli -a emacs
+    set -x EDITOR vi
 end
