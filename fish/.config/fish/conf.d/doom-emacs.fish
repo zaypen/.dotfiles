@@ -1,1 +1,1 @@
-[ -e ~/.emacs.d/bin ] && fish_add_path --append $HOME/.emacs.d/bin
+[ -e ~/.config/emacs/bin ] && fish_add_path --append $HOME/.config/emacs/bin
