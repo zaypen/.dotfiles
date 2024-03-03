@@ -1,7 +1,4 @@
-package bass
 package foreign-env
-package nvm
-package rustup
 package vcs
 theme bobthefish
 theme default
