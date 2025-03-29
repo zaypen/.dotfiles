@@ -1,0 +1,176 @@
+#+PROPERTY: header-args :tangle config.el
+
+#+title: Doom Emacs Configuration
+#+author: zaypen
+#+email: zaypen@gmail.com
+
+* My Doom Emacs Configuration
+
+** General
+*** Personal Information
+
+#+begin_src emacs-lisp :tangle yes
+(setq user-full-name "Yapeng Zhang"
+      user-mail-address "zaypen@gmail.com")
+#+end_src
+
+** Appearance
+*** Theme
+
+#+begin_src emacs-lisp :tangle yes
+(setq doom-theme 'doom-palenight)
+(after! doom-themes
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t))
+#+end_src
+
+*** Fonts
+
+#+begin_src emacs-lisp
+(setq my/code-font "JetBrainsMono Nerd Font Mono") ;Nerd Fonts patched
+(setq my/pitch-font "Iosevka Nerd Font Mono")
+(setq doom-font (font-spec :family my/code-font :size 16)
+      doom-big-font (font-spec :family my/code-font :size 24)
+      doom-variable-pitch-font (font-spec :family my/pitch-font :size 16))
+(custom-set-faces! '(font-lock-comment-face :slant italic))
+#+end_src
+
+*** Line number
+
+#+begin_src emacs-lisp :tangle yes
+(setq display-line-numbers-type 't)
+#+end_src
+
+*** Splash
+
+#+begin_src emacs-lisp :tangle yes
+;; (setq fancy-splash-image (concat doom-private-dir "assets/doom-emacs-bw-light.svg"))
+#+end_src
+
+*** Disable shortcuts
+
+#+begin_src emacs-lisp :tangle yes
+;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+#+end_src
+
+** Key Bindings
+*** Leader Key
+
+Leader key for Insert mode
+#+begin_src emacs-lisp :tangle yes
+(setq doom-leader-alt-key "s-SPC"
+      doom-localleader-alt-key "s-SPC m")
+#+end_src
+
+*** Backward delete
+
+#+begin_src emacs-lisp :tangle yes
+#+end_src
+
+*** Region
+
+#+begin_src emacs-lisp :tangle yes
+(map! :leader "r" 'er/expand-region)
+#+end_src
+
+*** Buffers
+
+#+begin_src emacs-lisp :tangle yes
+(map! "s-{" 'previous-buffer)
+(map! "s-}" 'next-buffer)
+#+end_src
+
+** Editing
+*** Formatting
+#+begin_src emacs-lisp :tangle yes
+(setq-hook! 'typescript-ts-mode +format-with 'denofmt-ts)
+(setq-hook! 'typescript-tsx-mode +format-with 'denofmt-tsx)
+#+end_src
+** Org
+
+#+begin_src emacs-lisp :tangle yes
+(setq org-directory "~/org/")
+#+end_src
+
+** Project
+*** Projectile ignore
+#+begin_src emacs-lisp :tangle yes
+
+#+end_src
+
+** Code
+*** JavaScript/TypeScript
+#+begin_src emacs-lisp :tangle yes
+(map! :after tide
+      :map tide-mode-map
+      "M-RET" #'tide-fix)
+#+end_src
+
+** Terminal Usage
+*** Use main workspace for emacsclient
+#+begin_src emacs-lisp :tangle yes
+(after! persp-mode
+  (setq persp-emacsclient-init-frame-behaviour-override "main"))
+#+end_src
+
+** Window
+#+begin_src emacs-lisp :tangle no
+(defhydra doom-window-resize-hydra (:hint nil)
+  "
+_h_ decrease width
+_l_ increase width
+_j_ decrease height
+_k_ increase height
+_q_ quit
+"
+  ("h" evil-window-decrease-width)
+  ("j" evil-window-increase-height)
+  ("k" evil-window-decrease-height)
+  ("l" evil-window-increase-width)
+  ("q" nil))
+(map! :leader
+  (:prefix "w"
+   :desc "Hydra resize" :n "SPC" #'doom-window-resize-hydra/body))
+#+end_src
+** Miscs
+*** Confirm exit
+
+#+begin_src emacs-lisp :tangle yes
+(setq confirm-kill-emacs nil)
+#+end_src
+
+*** Transparency
+
+#+begin_src emacs-lisp
+(set-frame-parameter (selected-frame) 'alpha '(90 90))
+(add-to-list 'default-frame-alist '(alpha 90 90))
+#+end_src
+
+*** Display menubar accordingly
+
+#+begin_src emacs-lisp :tangle yes
+;; Ref: https://stackoverflow.com/questions/24956521/how-can-i-hide-the-menu-bar-from-a-specific-frame-in-emacs
+(defun contextual-menubar (&optional frame)
+  "Display the menubar in FRAME (default: selected frame) if on a
+    graphical display, but hide it if in terminal."
+  (interactive)
+  (set-frame-parameter frame 'menu-bar-lines
+                             (if (display-graphic-p frame)
+                                  1 0)))
+
+(add-hook 'after-make-frame-functions 'contextual-menubar)
+#+end_src
+
+*** Start maximized
+
+#+begin_src emacs-lisp :tangle yes
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+#+end_src
+
+*** Draw focus
+
+#+begin_src emacs-lisp :tangle yes
+;; (defun draw-focus (&)
+;;   (select-frame-set-input-focus (selected-frame)))
+;; (add-hook 'after-make-frame-functions 'draw-focus)
+#+end_src
