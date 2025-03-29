@@ -4,7 +4,7 @@ Your dotfiles are how you personalize your system. These are mine. -- [[https://
 
 ** Prerequisites
 
-*** stow
+*** =stow=
 
 stow is used to link dot files into your home directory, install it via below ways.
 
