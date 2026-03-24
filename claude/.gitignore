@@ -1,0 +1,7 @@
+.claude.json
+# Ignore everything in .claude/
+.claude/
+
+# But track specific files
+!.claude/CLAUDE.md
+!.claude/settings.json
