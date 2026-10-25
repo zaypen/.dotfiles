@@ -35,6 +35,10 @@ right_format = "$time"
 
 palette = 'catppuccin_macchiato'
 
+[character]
+success_symbol = '[>](bold green)'
+error_symbol = '[>](bold red)'
+
 [username]
 show_always = true
 style_user = "bg:red fg:crust"
