@@ -140,11 +140,10 @@ format = '[$symbol$environment ]($style)'
 ignore_base = false
 
 [time]
-disabled = false
+disabled = true
 format = "[ $time]($style)"
-time_format = "%T"
+use_12hr = true
 utc_time_offset = "-5"
-time_range = "10:00..20:00"
 
 [cmd_duration]
 min_time = 1000
