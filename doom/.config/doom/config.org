@@ -29,9 +29,9 @@
 #+begin_src emacs-lisp
 (setq my/code-font "JetBrainsMono Nerd Font Mono") ;Nerd Fonts patched
 (setq my/pitch-font "Iosevka Nerd Font Mono")
-(setq doom-font (font-spec :family my/code-font :size 16)
-      doom-big-font (font-spec :family my/code-font :size 24)
-      doom-variable-pitch-font (font-spec :family my/pitch-font :size 16))
+(setq doom-font (font-spec :family my/code-font :size 14.0)
+      doom-big-font (font-spec :family my/code-font :size 24.0)
+      doom-variable-pitch-font (font-spec :family my/pitch-font :size 14.0))
 (custom-set-faces! '(font-lock-comment-face :slant italic))
 #+end_src
 
