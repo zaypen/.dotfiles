@@ -2,4 +2,4 @@
 
 cd $(dirname $0)/..
 touch enabled
-cat enabled | xargs stow -Rv
+cat enabled | xargs stow -Rv --no-folding
