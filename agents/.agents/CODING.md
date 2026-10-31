@@ -65,7 +65,3 @@
 - Use standard prefixes including feat:, fix:, docs:, style:, refactor:, test:, chore:
 - Make small, incremental commits
 - Ensure every commit compiles and runs successfully
-
-## Interaction & Behavior Rules
-- Report to user immediately after 3 consecutive failed attempts
-- Ask for clarification if requirements are unclear

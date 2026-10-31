@@ -6,7 +6,7 @@ Read ~/.agents/HOST.md, if you need OS, network, neighbors of this machine
 
 ## Development
 
-Read ~/.agents/CODING.md, before coding
+Read ~/.agents/CODING.md before coding, if no project AGENTS.md provides coding rules.
 
 ## Style
 
@@ -53,6 +53,16 @@ The test: every change should trace directly to the request.
 - Turn vague asks into verifiable outcomes.
 - For multi-step tasks, state a brief plan with a verification check per step.
 - Strong criteria let you work independently; weak ones require constant clarification.
+- After 3 consecutive failed attempts at the same step, stop and report to the user instead of continuing.
+
+## System Changes
+
+No system-level installs or modifications (apt/brew, global pip/npm, OS config, etc.). If truly needed, stop and ask for approval first.
+
+Prefer isolated, project-local tooling instead:
+- Python: `uv` (venv, `uv add`, `uv run`) or a project venv - never `pip install` into the system/user interpreter.
+- Nix: project `flake.nix` / dev shell for dependencies and tools.
+- Otherwise: project-local package managers, devcontainers, or whatever the repo already uses.
 
 ## Secrets
 
